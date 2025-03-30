@@ -11,61 +11,45 @@
                 /* Row 2 */
                 &kp TAB    &mt LSFT A  &kp S    &kp D    &mt RALT F  &kp G    &kp H    &kp J    &kp K    &kp L    &kp SCLN   &mt RCTL QUOT
                 /* Row 3 */
-                &kp LCTL   &mt LCTL Z  &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMM   &kp DOT   &kp SLSH   &mt RALT BSLS
+                &kp LCTL   &mt LCTL Z  &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMM  &kp DOT   &kp SLSH  &mt RALT BSLS
                 /* Row 4 */
-                          &mt LSFT SPC   &kp LGUI   &lt MOUSE ESC   &lt LOWER ENT   &mt RGUI BSPC   &lt RAISE DEL
+                          &mt LSFT SPC   &kp LGUI   &layer_tap MOUSE ESC   &layer_tap LOWER ENT   &mt RGUI BSPC   &layer_tap RAISE DEL
             >;
         };
 
         lower {
             bindings = <
-                /* Row 1 */
-                &trans    &kp UNDS    &mt LGUI F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11    &mt RGUI F12
-                /* Row 2 */
-                &mt LCTL PPLS   &mt LSFT EXLM   &kp AT    &kp HASH   &mt LALT DLR   &kp PERC   &kp CIRC   &kp AMPR   &kp ASTR   &kp LPRN   &kp RPRN   &mt RCTL MINS
-                /* Row 3 */
-                &mt LALT EQL    &mt LCTL 1     &kp 2    &kp 3    &kp 4    &kp 5    &kp 6    &kp 7    &kp 8    &kp 9    &kp 0    &trans
-                /* Row 4 */
-                          &trans   &trans   &trans   &trans   &trans   &trans
+                &trans   &kp UNDS   &mt LGUI F1   &kp F2   &kp F3   &kp F4   &kp F5   &kp F6   &kp F7   &kp F8   &kp F9   &kp F10   &kp F11   &mt RGUI F12
+                &mt LCTL PPLS   &mt LSFT EXLM   &kp AT   &kp HASH   &mt LALT DLR   &kp PERC   &kp CIRC   &kp AMPR   &kp ASTR   &kp LPRN   &kp RPRN   &mt RCTL MINS
+                &mt LALT EQL   &mt LCTL 1   &kp 2   &kp 3   &kp 4   &kp 5   &kp 6   &kp 7   &kp 8   &kp 9   &kp 0   &trans
+                &trans   &trans   &trans   &trans   &trans   &trans
             >;
         };
 
         raise {
             bindings = <
-                /* Row 1 */
-                &trans    &kp NUM    &mt LGUI PSLS    &kp P7    &kp P8    &kp P9    &kp PMNS   &kp VOLU   &kp HOME   &kp UP    &kp PGUP   &kp PAUS   &kp CAPS    &trans
-                /* Row 2 */
-                &mt LCTL EQL    &mt LSFT PAST   &kp P4    &kp P5    &mt LALT P6   &kp PPLS   &kp MUTE   &kp LEFT   &kp DOWN   &kp RGHT   &kp INS    &mt RCTL APP
-                /* Row 3 */
-                &mt LALT EQL    &mt LCTL P0    &kp P1    &kp P2    &kp P3    &kp PCMM   &kp VOLD   &kp END    &kp PSCR   &kp PGDN   &kp SCRL   &trans
-                /* Row 4 */
-                          &trans   &trans   &trans   &trans   &trans   &trans
+                &trans   &kp NUM   &mt LGUI PSLS   &kp P7   &kp P8   &kp P9   &kp PMNS   &kp VOLU   &kp HOME   &kp UP   &kp PGUP   &kp PAUS   &kp CAPS   &trans
+                &mt LCTL EQL   &mt LSFT PAST   &kp P4   &kp P5   &mt LALT P6   &kp PPLS   &kp MUTE   &kp LEFT   &kp DOWN   &kp RGHT   &kp INS   &mt RCTL APP
+                &mt LALT EQL   &mt LCTL P0   &kp P1   &kp P2   &kp P3   &kp PCMM   &kp VOLD   &kp END   &kp PSCR   &kp PGDN   &kp SCRL   &trans
+                &trans   &trans   &trans   &trans   &trans   &trans
             >;
         };
 
         mouse {
             bindings = <
-                /* Row 1 */
-                &trans    &trans    &trans    &trans    &kp MS_ACL0    &kp MS_BTN2    &trans    &trans    &kp MS_WHLL    &kp MS_WHLD    &kp MS_WHLU    &kp MS_WHLR    &trans    &trans
-                /* Row 2 */
-                &trans    &trans    &trans    &kp MS_ACL1    &kp MS_BTN1    &trans    &trans    &kp MS_LEFT    &kp MS_DOWN    &kp MS_UP    &kp MS_RGHT    &trans
-                /* Row 3 */
-                &trans    &trans    &trans    &kp MS_ACL2    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-                /* Row 4 */
-                          &trans   &trans   &trans   &trans   &trans   &trans
+                &trans   &trans   &trans   &trans   &kp MS_ACL0   &kp MS_BTN2   &trans   &trans   &kp MS_WHLL   &kp MS_WHLD   &kp MS_WHLU   &kp MS_WHLR   &trans   &trans
+                &trans   &trans   &trans   &kp MS_ACL1   &kp MS_BTN1   &trans   &trans   &kp MS_LEFT   &kp MS_DOWN   &kp MS_UP   &kp MS_RGHT   &trans
+                &trans   &trans   &trans   &kp MS_ACL2   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans
+                &trans   &trans   &trans   &trans   &trans   &trans
             >;
         };
 
         adjust {
             bindings = <
-                /* Row 1 – убраны клавиши, связанные с RGB */
-                &boot    &trans    &kp AS_UP    &kp AS_TOGG    &kp AS_DOWN    &trans    &trans    &trans    &trans    &kp AS_DOWN    &kp AS_TOGG    &kp AS_UP    &trans    &boot
-                /* Row 2 */
-                &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans
-                /* Row 3 */
-                &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans
-                /* Row 4 */
-                          &trans   &kp SH_TOGG   &trans   &trans   &kp SH_TOGG   &trans
+                &boot   &trans   &kp AS_UP   &kp AS_TOGG   &kp AS_DOWN   &trans   &trans   &trans   &trans   &kp AS_DOWN   &kp AS_TOGG   &kp AS_UP   &trans   &boot
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &kp SH_TOGG  &trans  &trans  &kp SH_TOGG  &trans
             >;
         };
     };
