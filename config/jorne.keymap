@@ -1,148 +1,124 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
 
- #include <behaviors.dtsi>
- #include <dt-bindings/zmk/keys.h>
- #include <dt-bindings/zmk/bt.h>
- #include <dt-bindings/zmk/outputs.h>
- 
- #define DEF 0
- #define LWR 1
- #define RSE 2
- #define MUS 3
- #define ADJ 4
- 
- &lt { quick-tap-ms = <175>; };
- &mt { quick-tap-ms = <175>; };
- 
- / {
-     conditional_layers {
-         compatible = "zmk,conditional-layers";
-         tri_layer {
-             if-layers = <LWR RSE>;
-             then-layer = <ADJ>;
-         };
-     };
- 
-         keymap {
-                 compatible = "zmk,keymap";
- 
-                 default_layer {
-                         display-name = "MAIN";
- // -----------------------------------------------------------------------------------------
- // |  GUI |   ~  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  [   | GUI/] |
- //        | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |CTRL/'|
- //        | LALT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |RALT/\|
- //                           | RSE | SPC | LWR |   | LWR | BSPC | RSE |
-                         bindings = <
-    &kp ESC    &kp GRV    &mt LGUI Q  &kp W    &kp E         &kp R       &kp T    &kp Y    &kp U    &kp I      &kp O     &kp P      &kp LBRC    &mt RGUI RBRC
-               &kp TAB    &mt LSFT A  &kp S    &kp D         &mt RALT F  &kp G    &kp H    &kp J    &kp K      &kp L     &kp SCLN   &mt RCTL QUOT
-               &kp LCTL   &mt LCTL Z  &kp X    &kp C         &kp V       &kp B    &kp N    &kp M    &kp COMM   &kp DOT   &kp SLSH   &mt RALT BSLS
-                                        &mt LSFT SPC  &kp LGUI    &lt MOUSE ESC   &lt LOWER ENT   &mt RGUI BSPC   &lt RAISE DEL
-                         >;
-                 };
-                 lower_layer {
-                         display-name = "SYM";
- // -----------------------------------------------------------------------------------------
- // |     |  _  |  F1 |  F2 |  F3 |  F4 |  F5 |   |  F6 |  F7 |  F8 |  F9 | F10 | F11 | F12 |
- //       |  +  |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |  -  |
- //       |  =  |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |     |
- //                         | ADJ |     |     |   |     |     | ADJ |
-                         bindings = <
-      &trans    &kp UNDS        &mt LGUI F1    &kp F2   &kp F3    &kp F4    &kp F5    &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11    &mt RGUI F12
-                &mt LCTL PPLS   &mt LSFT EXLM  &kp AT   &kp HASH  &mt LALT DLR   &kp PERC   &kp CIRC   &kp AMPR   &kp ASTR   &kp LPRN   &kp RPRN   &mt RCTL MINS
-                &mt LALT EQL    &mt LCTL 1     &kp 2    &kp 3     &kp 4    &kp 5    &kp 6    &kp 7    &kp 8    &kp 9    &kp 0    &trans
-                          &trans   &trans   &trans   &trans   &trans   &trans
-                         >;
-                 };
- 
-                 raise_layer {
-                         display-name = "NUM";
- // -----------------------------------------------------------------------------------------
- // |     | NMLK |  /  |  7  |  8  |  9  |  -  |   | VOLU| HOME| PRSC| PGUP| SCLK| CLCK|     |
- //       |CTRL/=|  *  |  4  |  5  |  6  |  +  |   | MUT | LEFT|  UP | RGHT| INS | APP |
- //       |      |  0  |  1  |  2  |  3  |  .  |   | VOLD| END | DOWN| PGDN| PAUS|     |
- //                          |     |     | ADJ |   | ADJ |     |     |
-                         bindings = <
-      &trans    &kp NUM    &mt LGUI PSLS    &kp P7    &kp P8    &kp P9    &kp PMNS   &kp VOLU   &kp HOME   &kp UP    &kp PGUP   &kp PAUS   &kp CAPS    &trans
-                &mt LCTL EQL    &mt LSFT PAST   &kp P4    &kp P5    &mt LALT P6   &kp PPLS   &kp MUTE   &kp LEFT   &kp DOWN   &kp RGHT   &kp INS    &mt RCTL APP
-                &mt LALT EQL    &mt LCTL P0    &kp P1    &kp P2    &kp P3    &kp PCMM   &kp VOLD   &kp END    &kp PSCR   &kp PGDN   &kp SCRL   &trans
-                          &trans   &trans   &trans   &trans   &trans   &trans
-                         >;
-                 };
-                 mouse_layer {
-                         display-name = "MUS";
-                         bindings = <
-      &trans    &trans    &trans    &trans    &kp MS_ACL0    &kp MS_BTN2    &trans    &trans    &kp MS_WHLL    &kp MS_WHLD    &kp MS_WHLU    &kp MS_WHLR    &trans    &trans
-                &trans    &trans    &trans    &kp MS_ACL1    &kp MS_BTN1    &trans    &trans    &kp MS_LEFT    &kp MS_DOWN    &kp MS_UP    &kp MS_RGHT    &trans
-                &trans    &trans    &trans    &kp MS_ACL2    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-                          &trans   &trans   &trans   &trans   &trans   &trans
-                         >;
-                 };
-                 adjust_layer {
-                         display-name = "ADJ";
- // -----------------------------------------------------------------------------------------
- // | RST | BLDR | STU |     |     |     |     |   |     |     |     |     | STU | BLDR | RST |
- //       | BTCLR| BT0 | BT1 | BT2 | BT3 | BT4 |   | BT4 | BT3 | BT2 | BT1 | BT0 | BTCLR|
- //       | OUT  |     |     |     |     |     |   |     |     |     |     |     | OUT  |
- //                          |     |     |     |   |     |     |     |
-                         bindings = <
-    &sys_reset &bootloader  &studio_unlock &none        &none        &none        &none              &none        &none        &none        &none        &studio_unlock &bootloader &sys_reset
-               &bt BT_CLR   &bt BT_SEL 0   &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4       &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0   &bt BT_CLR
-               &out OUT_TOG &none          &none        &none        &none        &none              &none        &none        &none        &none        &none          &out OUT_TOG
-                                                                           &trans &none &trans       &trans &none &trans
-                         >;
-                 };
-         };
- };
- / {
-    combos {
-        compatible = "zmk,combos";
 
-        qwerty_esc {
-            timeout-ms = <50>;
-            /* Клавиши Q и W находятся на позициях 2 и 3 (нумерация с 0) */
-            key-positions = <2 3>;
-            bindings = <&kp ESC>;
-        };
+#define DEF 0
+#define LWR 1
+#define RSE 2
+#define MSE 3
+#define ADJ 4
 
-        yu_left_paren {
-            timeout-ms = <50>;
-            key-positions = <7 8>;
-            bindings = <&kp LEFT_PAREN>;
-        };
+&lt { quick-tap-ms = <175>; };
+&mt { quick-tap-ms = <175>; };
 
-        ui_right_paren {
-            timeout-ms = <50>;
-            key-positions = <8 9>;
-            bindings = <&kp RIGHT_PAREN>;
-        };
-
-        hj_left_curly {
-            timeout-ms = <50>;
-            key-positions = <20 21>;
-            bindings = <&kp LEFT_CURLY_BRACE>;
-        };
-
-        jk_right_curly {
-            timeout-ms = <50>;
-            key-positions = <21 22>;
-            bindings = <&kp RIGHT_CURLY_BRACE>;
-        };
-
-        nm_pipe {
-            timeout-ms = <50>;
-            key-positions = <32 33>;
-            bindings = <&kp PIPE>;
-        };
-
-        rt_underscore {
-            timeout-ms = <50>;
-            key-positions = <5 6>;
-            bindings = <&kp UNDERSCORE>;
+/ {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <LWR RSE>;
+            then-layer = <ADJ>;
         };
     };
+
+        keymap {
+                compatible = "zmk,keymap";
+
+                default_layer {
+                        display-name = "MAIN";
+                        bindings = <
+   &kp LWIN &kp GRAVE &mt LGUI Q &kp W &kp E        &kp R       &kp T         &kp Y        &kp U          &kp I     &kp O   &kp P    &kp LBKT      &mt RWIN RBKT
+            &kp LCTRL &mt LSFT A &kp S &kp D        &mt LALT F  &kp G         &kp H        &kp J          &kp K     &kp L   &kp SEMI &mt RCTRL SQT
+            &kp LALT  &mt LCTL Z &kp X &kp C        &kp V       &kp B         &kp N        &kp M          &kp COMMA &kp DOT &kp FSLH &mt RALT BSLH
+                                       &mt LSFT SPC &kp LGUI    &lt MSE ESC   &lt LWR ESC  &mt RGUI BSPCT &lt RSE DEL
+                        >;
+                };
+                lower_layer {
+                        display-name = "SYM";
+                        bindings = <
+   &trans &kp UNDER      &mt LGUI F1   &kp F2 &kp F3   &kp F4        &kp F5           &kp F6    &kp F7   &kp F8   &kp F9   &kp F10  &kp F11 &mt RGUI F12
+          &mt LCTRL PLUS &mt LSFT EXCL &kp AT &kp HASH &mt LALT DLLR &kp PRCNT        &kp CARET &kp AMPS &kp STAR &kp LPAR &kp RPAR &mt RCTRL MINUS
+          &mt LALT EQUAL &mt LCTL N1   &kp N2 &kp N3   &kp N4        &kp N5           &kp N6    &kp N7   &kp N8   &kp N9   &kp N0   &trans
+                                              &trans   &trans        &trans           &trans    &trans   &trans
+                        >;
+                };
+
+                raise_layer {
+                        display-name = "NUM";
+                        bindings = <
+   &trans &kp KP_NUM      &kp KP_SLASH    &kp KP_N7 &kp KP_N8 &kp KP_N9      &kp KP_MINUS        &kp C_VOL_UP &kp HOME &kp UP     &kp PG_UP &kp SLCK &kp CAPS &trans
+          &mt LCTRL EQUAL &kp KP_MULTIPLY &kp KP_N4 &kp KP_N5 &mt LALT KP_N6 &kp KP_PLUS         &kp C_MUTE   &kp LEFT &kp DOWN   &kp RIGHT &kp INS  &mt RCTRL K_APP
+          &trans          &kp KP_N0       &kp KP_N1 &kp KP_N2 &kp KP_N3      &kp KP_DOT          &kp C_VOL_DN &kp END  &kp PSCRN  &kp PG_DN &kp PAUSE_BREAK &trans
+                                                        &trans &trans &trans        &trans &trans &trans
+                        >;
+                };
+                mouse_layer {
+                        display-name = "MSE";
+                        bindings = <
+      &trans    &trans    &trans    &trans    &trans    &kp LCLK    &trans    &trans    &kp SCRL_LEFT    &kp SCRL_DOWN    &kp SCRL_UP    &kp SCRL_RIGHT    &trans    &trans
+                &trans    &trans    &trans    &trans    &kp LCLK    &trans    &trans    &kp MOVE_LEFT    &kp MOVE_DOWN    &kp MOVE_UP    &kp MOVE_RIGHT    &trans
+                &trans    &trans    &trans    &trans    &trans      &trans    &trans    &trans    &trans    &trans    &trans    &trans
+                                              &trans    &trans      &trans    &trans    &trans    &trans
+                         >;
+                };
+                adjust_layer {
+                        display-name = "ADJ";
+                        bindings = <
+   &sys_reset &bootloader  &studio_unlock &none        &none        &none        &none              &none        &none        &none        &none        &studio_unlock &bootloader &sys_reset
+              &bt BT_CLR   &bt BT_SEL 0   &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4       &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0   &bt BT_CLR
+              &out OUT_TOG &none          &none        &none        &none        &none              &none        &none        &none        &none        &none          &out OUT_TOG
+                                                                          &trans &none &trans       &trans &none &trans
+                        >;
+                };
+        };
+};
+
+/ {
+        combos {
+            compatible = "zmk,combos";
+
+            combo_esc {
+                timeout-ms = <50>;
+                key-positions = <2 3>;
+                bindings = <&kp ESC>;
+            };
+
+            yu_left_paren {
+                timeout-ms = <50>;
+                key-positions = <7 8>;
+                bindings = <&kp LPAR>;
+            };
+
+            ui_right_paren {
+                timeout-ms = <50>;
+                key-positions = <8 9>;
+                bindings = <&kp RPAR>;
+            };
+
+            hj_left_curly {
+                timeout-ms = <50>;
+                key-positions = <20 21>;
+                bindings = <&kp LBRC>;
+            };
+
+            jk_right_curly {
+                timeout-ms = <50>;
+                key-positions = <21 22>;
+                bindings = <&kp RBRC>;
+            };
+
+            nm_pipe {
+                timeout-ms = <50>;
+                key-positions = <32 33>;
+                bindings = <&kp PIPE>;
+            };
+
+            rt_underscore {
+                timeout-ms = <50>;
+                key-positions = <5 6>;
+                bindings = <&kp UNDERSCORE>;
+            };
+        };
 };
