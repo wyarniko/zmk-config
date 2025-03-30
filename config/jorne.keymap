@@ -42,6 +42,7 @@
                &kp TAB    &mt LSFT A  &kp S    &kp D         &mt RALT F  &kp G    &kp H    &kp J    &kp K      &kp L     &kp SCLN   &mt RCTL QUOT
                &kp LCTL   &mt LCTL Z  &kp X    &kp C         &kp V       &kp B    &kp N    &kp M    &kp COMM   &kp DOT   &kp SLSH   &mt RALT BSLS
                                         &mt LSFT SPC  &kp LGUI    &lt MOUSE ESC   &lt LOWER ENT   &mt RGUI BSPC   &lt RAISE DEL
+                         >;
                  };
                  lower_layer {
                          display-name = "SYM";
