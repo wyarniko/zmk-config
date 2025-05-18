@@ -49,7 +49,7 @@
                         display-name = "MSE";
                         bindings = <
       &trans    &trans    &trans    &trans    &trans    &mkp MCLK      &trans    &trans    &msc SCRL_LEFT    &msc SCRL_DOWN    &msc SCRL_UP    &msc SCRL_RIGHT    &trans    &trans
-                &trans    &trans    &trans    &trans    &mkp RCLK      &trans    &trans    &msc MOVE_LEFT    &msc MOVE_DOWN    &msc MOVE_UP    &msc MOVE_RIGHT    &trans
+                &trans    &trans    &trans    &trans    &mkp RCLK      &trans    &trans    &mmv MOVE_LEFT    &mmv MOVE_DOWN    &mmv MOVE_UP    &mmv MOVE_RIGHT    &trans
                 &trans    &trans    &trans    &trans    &mkp LCLK      &trans    &trans    &trans            &trans            &trans          &trans             &trans
                                               &trans    &trans         &trans    &trans    &trans            &trans
                          >;
